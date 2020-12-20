@@ -1,3 +1,5 @@
+#pragma once
+
 #ifndef SCHEDULER_H
 #define SCHEDULER_H
 
@@ -28,86 +30,9 @@
 #define _PL(a)
 #endif /* _DEBUG_ */
 
-// Method definitions
-#define DURATION 10000
-#define PERIOD 600
-#ifndef LED_BUILTIN
-#define LED_BUILTIN 13
-#endif
-
-#define LED 11
+bool LED_state;
 
 // Scheduler
 Scheduler ts;
-
-int i = 0;
-int pwm = 255;
-int rate = 25;
-bool LED_state = false;
-
-// Prototypes
-void blink1CB();
-inline void LEDOn() {
-  digitalWrite( LED_BUILTIN, HIGH );
-}
-
-inline void LEDOff() {
-  digitalWrite( LED_BUILTIN, LOW );
-}
-
-// Tasks
-Task tBlink1 ( PERIOD * TASK_MILLISECOND, TASK_FOREVER, &blink1CB, &ts, true );
-
-void blink1CB() {
-  // if ( tBlink1.isFirstIteration() ) {
-  //   _PP(millis());
-  //   _PL(": Blink1 - simple flag driven");
-  //   LED_state = false;
-  // }
-
-  if ( LED_state ) {
-    LEDOff();
-    LED_state = false;
-  }
-  else {
-    LEDOn();
-    LED_state = true;
-  }
-
-}
-
-
-//   // // turn the LED on (HIGH is the voltage level)
-//   // digitalWrite(LED_BUILTIN, HIGH);
-
-//   // // wait for a second
-//   // delay(1000);
-
-//   // // turn the LED off by making the voltage LOW
-//   // digitalWrite(LED_BUILTIN, LOW);
-
-//   //  // wait for a second
-//   // delay(1000);
-
-// void loop()
-// {
-//   for(i = 0;i<pwm;i++){
-//     analogWrite(LED,i);
-//     delay(((60000/rate)*.1)/pwm);
-//   }
-//   for(i = pwm;i>0;i--){
-//     analogWrite(LED,i);
-//     delay(((60000/rate)*.2)/pwm);
-//   }
-//   for(i=0;i<pwm;i++){
-//     analogWrite(LED,i);
-//     delay(((60000/rate)*.1)/pwm);
-//   }
-//   for(i=pwm;i>0;i--){
-//     analogWrite(LED,i);
-//     delay(((60000/rate)*.6)/pwm);
-//   }
-// }
-
 
 #endif /* SCHEDULER_H */
