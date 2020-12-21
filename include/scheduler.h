@@ -1,5 +1,3 @@
-#pragma once
-
 #ifndef SCHEDULER_H
 #define SCHEDULER_H
 
@@ -18,10 +16,6 @@
 // #define _TASK_TIMEOUT           // Support for overall task timeout
 // #define _TASK_OO_CALLBACKS      // Support for dynamic callback method binding
 
-// Debug and Test options
-#define _DEBUG_
-// #define _TEST_
-
 #ifdef _DEBUG_
 #define _PP(a) Serial.print(a);
 #define _PL(a) Serial.println(a);
@@ -29,8 +23,6 @@
 #define _PP(a)
 #define _PL(a)
 #endif /* _DEBUG_ */
-
-bool LED_state;
 
 // Scheduler
 Scheduler ts;
