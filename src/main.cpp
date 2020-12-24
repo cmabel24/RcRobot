@@ -5,6 +5,8 @@
 #include "scheduler.h"
 #include "motorDriver.h"
 
+uint8_t i;
+
 void setup() {
   Serial.begin(115200);
   md.init();
@@ -12,5 +14,8 @@ void setup() {
 }
 
 void loop() {
+  if (i == 255)
+    Serial.print(i);
+  i++;
   ts.execute();
 }
