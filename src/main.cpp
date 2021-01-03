@@ -2,20 +2,16 @@
 // #define _DEBUG_
 // #define _TEST_
 
-#include "scheduler.h"
-#include "motorDriver.h"
-
-uint8_t i;
+#include "rover.h"
 
 void setup() {
   Serial.begin(115200);
   md.init();
-  md.calibrateCurrentOffsets(); 
+  md.calibrateCurrentOffsets();
 }
 
 void loop() {
-  if (i == 255)
-    Serial.print(i);
-  i++;
+  if (Serial.available())
+    tRead.restart();
   ts.execute();
 }

@@ -3,6 +3,7 @@
 
 #include <DualG2HighPowerMotorShield.h>
 #include "scheduler.h"
+
 #ifdef _TEST_
 #include <unity.h>
 #endif // _TEST_ 
@@ -31,7 +32,7 @@ class SpeedSetting {
     int ls;
     int rs;
     void set(int m1, int m2) {
-      ls = m1;
+      ls = m1; 
       rs = m2;
     }
 } Speeds;
