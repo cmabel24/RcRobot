@@ -41,6 +41,7 @@ class Controller {
 
 class Rover {
   private:
+    int8_t _VBATT = A2;
     RoverTellemetry message = RoverTellemetry_init_default;
     void read();
   public:
@@ -98,7 +99,7 @@ void Rover::read() {
   message.faultRS = md.getM2Fault();
   message.motorAmpsLS = md.getM1CurrentMilliamps();
   message.motorAmpsRS = md.getM2CurrentMilliamps();
-  // message.vBatt = ;
+  message.vBatt = 3 / 2 * analogRead(_VBATT);
 }
 
 void Rover::send() {
